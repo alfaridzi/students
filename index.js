@@ -46,12 +46,6 @@ function notAuthenticationMiddleware() {
 }
 
 app.get('/',notAuthenticationMiddleware(), function(req,res) {
-	bcrypt.hash('123456', 10, function(err, hash) {
-    if (err) { throw (err); }
-    bcrypt.compare('123456', hash, function(err, result) {
-        if (err) { throw (err); }
-    });
-});
 	res.sendFile(path + 'login.html');
 })
 
