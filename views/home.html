@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Single page web app using Angularjs</title>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<script src="script.js"></script>
+
+<style>
+	body {
+		background-color:#F9A602;
+		margin-top: 150px;
+	}
+
+	.card-img-left {
+  border-bottom-left-radius: calc(.25rem - 1px);
+  border-top-left-radius: calc(.25rem - 1px);
+  float: left;
+  padding-right: 1em;
+  margin-bottom: -1.25em;
+}
+.rounded {
+	background-color: white;
+	height: 80px;
+	width: 80px;
+	border-radius:100px !important;
+	margin: 20px !important;
+
+}.strip {
+	background-color: #9fa8a4;
+	height: 80px;
+	width: auto;
+	margin: 40px 10px !important;
+}
+
+
+.strip-footer {
+	background-color: #9fa8a4;
+	height: 40px;
+	width: auto;
+	margin: -0px -0px !important;
+}
+
+.strip-right {
+	background-color: #9fa8a4;
+	height: 60px;
+	width: 200px;
+	margin: 30px 10px !important;
+}
+.card {
+	background-color: #dce2df !important;
+	border: 0px !important;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+	<div class="row" id="wrapper">
+		
+
+</div>
+
+</div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	
+	$.ajax({
+        url: 'http://localhost:3000/students',
+        type: 'GET',
+        dataType: 'json',
+        complete: function(data){
+        	
+        	
+            $.each(data.responseJSON, function(index, value) {
+
+			    $('#wrapper').append('<div class="col-md-4"><a href="students/' + value.student_id+'"><div class="card card-block"><div class="card-text"><div class="rounded float-left" ></div><div class="strip-right float-right"></div><div style="clear:both"></div><div class="strip"></div><div class="strip-footer"></div></div></div></a></div></div>'); 
+			  }); 
+        },
+        success: function(data){
+            
+        }
+    });
+
+</script>
+</html>
